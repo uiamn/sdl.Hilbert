@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         decButton = findViewById(R.id.dec_button);
         incButton = findViewById(R.id.inc_button);
 
+        if(savedInstanceState != null) order = savedInstanceState.getInt("order");
+
         decButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,6 +45,12 @@ public class MainActivity extends AppCompatActivity {
                 display();
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt("order", order);
     }
 
     @Override
